@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Index
+{% endblock title %}
+
+{% block body %}
+  {% if user.is_authenticated %}
+    <a href="{% url 'articles:create' %}">[create]</a><hr>
+  {% else %}
+    <span>U need to signin to write articles</span><hr>
+  {% endif %}
+    
+  <h2>Listz</h2>
+  
+  {% for article in articles %}
+    <div>
+      <h3>{{ article.pk }}:  {{ article.title }}</h3>
+      <p>ID: {{ article.user }}  {{ article.created_at }}</p>
+      <a href="{% url 'articles:detail' article_pk=article.pk %}">[details]</a>
+    </div><hr>
+  {% endfor %}
+{% endblock body %}

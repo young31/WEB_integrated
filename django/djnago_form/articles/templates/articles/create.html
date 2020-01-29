@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Create
+{% endblock title %}
+
+{% block body %}
+  <h1>New Article</h1>
+  <a href="{% url 'articles:index' %}">[back]</a>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% comment %} <label for="title">title.</label><br>
+    <input type="text" name="title" id="title"><br>
+    <label for="content">content.</label><br>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea><br> {% endcomment %}
+    <button type="submit">post</button>
+  </form>
+{% endblock body %}

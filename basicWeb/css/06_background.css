@@ -1,0 +1,24 @@
+body {
+    background-image: url("https://st3.depositphotos.com/1169411/14320/i/1600/depositphotos_143206953-stock-photo-splash-of-paint-strokes-isolated.jpg");
+    background-size: cover;
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+}
+
+
+/* # "*"은 전체 픽하는 것 # */
+
+p {
+    font-family: 'Lacquer', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+span {
+    /* font-size: 150%;
+    font-family: 'Courier New', courier, monospace;
+    font-weight: bold; */
+    font: 'Courier New', 2rem;
+    border: solid
+}

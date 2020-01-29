@@ -1,0 +1,12 @@
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+#bye {
+    display: none;
+}
+
+#hollow {
+    visibility: hidden;
+}

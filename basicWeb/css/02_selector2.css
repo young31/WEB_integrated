@@ -1,0 +1,41 @@
+/* # 그룹 # */
+h1, h2, h3, h4, h5, h6, .binch {
+  color: chocolate;
+}
+
+/* # 인접형제 선택자 # */
+.red + .blue + div {
+  background-color: purple;
+}
+
+/* 일반형제 */
+h2 ~ p {
+  color: green;
+}
+
+/* 자식 */
+.parent > li {
+  color: red
+}
+
+/* 후손 */
+.ancestor li {
+  color: blue;
+}
+
+
+/* div */
+div {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black
+}
+
+.blue {
+  background-color: red;
+}
+
+.red {
+  background-color: blue;
+}
+

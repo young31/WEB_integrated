@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lotto</title>
+</head>
+<body>
+  {% for n in nums %}
+    <p>{{ n }}</p>
+  {% endfor %}
+
+  <p>your num is {{ nums }}</p>
+  <p>and real is {{ real_nums }}</p>
+ 
+  
+  {% if nums ==  real_nums %}
+    <p>퇴사 ㄱㄱ</p>
+  {% else %}
+    <p>야근 ㄱㄱ</p>
+  {% endif %}
+</body>
+</html>

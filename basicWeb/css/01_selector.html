@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS SELECTOR</title>
+
+  <link rel="stylesheet" href="01_selector.css">
+</head>
+
+<body>
+  <p>RED</p>
+  <h1>BLUE</h1>
+  <h2 class="pink">PINK</h2>
+  <h3 id="green">GREEN</h3>
+  <h3 id="purple" class="pink">id vs class</h3>
+  <h1 class="pink">tag vs class</h1>
+
+  <!-- # span tag와 div tag는 모두 의미는 없지만, 
+    마크업을 해야 css를 적용시킬 수 있기때문에 활용 
+    특정위치 지정 > 선택자 필요 > 마크업필요! # -->
+  <p><span class="pink">pink</span> & <span class="yellow">yellow</span></p>
+
+  <!-- # 써진것과는 별개로 yellow가 나중에 선언되었기 때문에 yellow적용 # -->
+  <p class="bold yellow pink">Multi_Class</p>
+
+  <p class="bold yellow pink" id="orange" style="color: saddlebrown">MOST POWERFUL</p>
+</body>
+
+</html>

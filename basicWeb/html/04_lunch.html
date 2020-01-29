@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lunch</title>
+  <style>
+    th {
+      border:2px solid rgb(177, 179, 34)
+    }
+  </style>
+</head>
+<body>
+  <table border="1px grey;">
+  <!-- ## tr을 써줘야함 ## -->
+    <tr>
+      <!-- ## header는 명시적 표현 ## -->
+      <th></th>
+      <th>월요일</th>
+      <th>화요일</th>
+      <th>수요일</th>
+    </tr>
+    <tr>
+      <td>A course</td>
+      <td rowspan="2">짬뽕</td>
+      <td colspan="2">초밥</td>
+    </tr>
+    <tr>
+      <td>B course</td>
+      <td>김치찌개</td>
+      <td>삼계탕</td>
+    </tr>
+  </table>
+</body>
+</html>

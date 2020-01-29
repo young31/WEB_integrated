@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+NEW
+{% endblock title %}
+
+{% block body %}
+    <h1>INSERT INTO</h1>
+  <form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
+    <p>title</p>
+    <input type="text" name="title"><br>
+    <p>contents</p>
+    <textarea name="content" cols="30" rows="10"></textarea>
+    <button type="submit">SUBMIT</button>
+  </form>
+  <a href="/articles/">[back]</a>
+{% endblock body %}

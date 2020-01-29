@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- vue.js import  -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Vue Start</title>
+</head>
+
+<body>
+  <div id="app">
+    {{ message }}<br> count = {{ count }}
+    <button v-on:click="plus">plus</button>
+    <button v-on:click="minus">minus</button>
+  </div>
+  <script>
+    const app = new Vue({
+      // 여기에 작성한다
+      el: '#app',
+      // data는 어떤걸
+      data: {
+        message: 'hello vue~',
+        count: 0
+      },
+      methods: {
+        // function 키워드로 함수 정의해야 this가 vue를 보고 있음
+        plus: function() {
+          // this: 생성한 vue인스턴스를 가르킴 >> this.count: this의 count
+          this.count++
+        },
+        minus: function() {
+          this.count--
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

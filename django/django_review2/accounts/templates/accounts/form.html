@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Accounts
+{% endblock title %}
+
+
+
+{% block body %}
+  {% comment %} 통합아웃풋버전 {% endcomment %}
+  {% if request.resolver_match.url_name == 'signup' %}
+    <h2>Signup</h2>
+  {% elif request.resolver_match.url_name == 'login'%}
+    <h2>Login~</h2>
+  {% elif request.resolver_match.url_name == 'update'%}
+    <h2>Update your infos</h2>
+  {% else %}
+    <h2>Change your password</h2>
+  {% endif %}
+
+  <form action="" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+  </form>
+{% endblock body %}

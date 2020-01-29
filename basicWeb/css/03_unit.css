@@ -1,0 +1,16 @@
+h1 {
+  /* # font-size: 2em <- default */
+  color: darkgoldenrod;
+  font-size: 50%; /* # defalut = 16px */
+}
+
+section > h2 {
+  color: skyblue;
+  /* 상속의 영향 (section=8px)  >>  8*5=40px */
+  font-size: 5em;
+}
+
+ul {
+  /* root(16px) 의 2배  >>  상속영향x */
+  font-size: 2rem;
+}

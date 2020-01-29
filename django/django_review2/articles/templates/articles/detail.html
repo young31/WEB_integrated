@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Show your Detail
+{% endblock title %}
+
+{% block body %}
+<style>
+  #title {
+    margin: 5px 5px 0px 5px
+  }
+</style>
+
+  {% comment %} if문 >> 인증여부확인 {% endcomment %}
+  {% if article.user == user %}
+  <a href="{% url 'articles:update' article_pk=article.pk %}">[edit]</a>
+  <form action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">delete</button>
+  </form>
+  {% endif %}
+
+  {% comment %} 공통 {% endcomment %}
+  <h2>article</h2><hr>
+  <h3 id='title'>Title: {{ article.title }}</h3>
+  <span style="font-size:8pt">ID: {{ article.user }}</span> 
+  {% comment %} 좋아요 {% endcomment %}
+  <p><span id='likeCount'>{{ article.liked_users.all | length }}</span> liked</p>
+
+  <i 
+    class="{% if user in article.liked_users.all %}fas{% else %}far{% endif %} fa-heart fa-xs" 
+    id="likeBtn" 
+    data-id="{{ article.pk }}"
+    style="color: red"></i>
+  {% comment %} 아티클 {% endcomment %}
+  <span style="font-size:8pt">{{ article.created_at }}</span>
+  <p>{{ article.content }}</p><hr>
+
+  {% if user.is_authenticated %}
+    <form action="{% url 'articles:create_comment' article_pk=article.pk%}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">comment</button>
+    </form> 
+  {% else %}
+    <p>U should login to comment <a href="{% url 'accounts:login' %}">click</a></p>
+  {% endif %}
+
+  
+  <div>
+    <h3>comments</h3>
+    {% for comment in comments %}
+      <span>{{ comment.pk }}번글: {{ comment.comment }}///</span>
+      <span style="align-right">작성자: {{ comment.user }}</span><p></p>
+      {% if comment.user == request.user %} 
+      {% comment %} if 시작 {% endcomment %}
+        <form action="{% url 'articles:delete_comment' article.pk comment.pk%}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="delete"></input>
+        </form>
+      {% endif %}
+
+      {% comment %} if 끝  {% endcomment %}
+    {% endfor %}
+  </div>
+
+  {% include 'articles/_follow.html' %}
+
+  <script>
+    const likeBtn = document.querySelector('#likeBtn')
+    likeBtn.addEventListener('click', function(event) {
+      const articleId = event.target.dataset.id
+      axios.get(`/articles/like/${articleId}/`)
+      .then(function(response) {
+        if (response.data.liked) {
+          likeBtn.classList.remove('far')
+          likeBtn.classList.add('fas')
+        } else {
+          likeBtn.classList.remove('fas')
+          likeBtn.classList.add('far')
+        }
+
+        const likeCount = document.querySelector('#likeCount')
+        likeCount.innerText = response.data.count
+      })
+    })
+  </script>
+
+{% endblock body %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+index
+{% endblock  %}
+
+{% block content %}
+<h1>articles list</h1>
+<ul>
+{% for article in articles %}
+  <li>{{ article.title }}</li>
+{% endfor %}
+</ul>
+<a href="/articles/new">go to add</a>
+<h1>yapyap!!</h1>
+{% endblock  %}

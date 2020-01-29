@@ -1,0 +1,19 @@
+<div class="jumbotron text-center text-white bg-dark">
+  <p class="lead mb-1">작성자 정보</p>
+  <h1 class="display-4">{{ article.user.username }}</h1><hr>
+  <p class="lead">
+    팔로잉 : {{ article.user.followees.all|length }} /
+    팔로워 : {{ article.user.followers.all|length }}
+  </p>
+
+  {% comment %} user 정보 제어 {% endcomment %}
+  {% if user != article.user %}
+    {% comment %} 팔로우 버튼 만들기 {% endcomment %}
+    {% if user in article.user.followers.all %}
+      <a href="{% url 'articles:follow' article.pk article.user.pk %}" class="btn btn-primary btn-lg">UnFollow</a>
+    {% else %}
+      <a href="{% url 'articles:follow' article.pk article.user.pk %}" class="btn btn-primary btn-lg">Follow</a>
+    {% endif %}
+    {% comment %} text만 다르게 보냄 >> 함수에서 제어함 {% endcomment %}
+  {% endif %}
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hi, HTML</title>
+</head>
+<body>
+  <!-- ## Heading ## -->
+  <h1>This is h1</h1>
+  <h2>Ths is h2</h2>
+  <h3>This is h3</h3>
+  <h4>This is h4</h4>
+  <h5>This is h5</h5>
+  <h6>This is h6</h6>
+  <hr/>
+  <!-- ## bold ## -->
+  <div>
+    <b>This is BOLD</b>
+    <strong>This is STRONG(semantic)</strong>
+  </div>
+  <hr/>
+  <!-- ## italic ## -->
+  <div>
+    <i>This is italic</i>
+    <em>This is em(semantic)</em> <!-- emphasized -->
+  </div>
+  <hr/>
+  <!-- ## hilighted ## -->
+  <h2>This is <mark>mark</mark>.</h2>
+  <hr/>
+  <!-- ## del / ins ## -->
+  <h2>This is <del>del</del>.</h2> 
+  <h2>This is <ins>ins</ins>.</h2>
+  <hr/>
+  <!-- ## sub / sup ## -->
+  <h2>This is <sub>sub</sub>.</h2>
+  <h2>This is <sup>sup</sup>.</h2>
+  <hr/>
+  <!-- ## p / br ## -->
+  <p>
+    This is p-tag. <br />
+    This is p-tag. <br />
+    This is p-tag. 
+  </p>
+  <hr/>
+  <!-- ## pre ## -->
+  <pre>
+    from flask import Flask
+    app = Flask(__name__)
+
+    @app.route('/')
+    def hello():
+      retrun 'Hello'
+  </pre>
+  <hr/>
+  <!-- ## hr ## -->
+  <hr/> <!-- ## 줄그어서 구분시켜주는 역할 ## -->
+
+  <!-- ## q / blockquote ## -->
+  <p>
+    json said, <q>may you have hphk?</q> <!-- 인용문표시로 참조안됨 -->
+  </p>
+  <blockquote>
+    may you have hphk?
+  </blockquote>
+  <hr/>
+  <!-- ## ol / ul / li -->
+  <ol>
+    <li>first li with ol</li>
+    <li>second li with ol</li>
+    <li>third li with ol</li>
+  </ol>
+  <ul>
+    <li>first li with ul</li>
+    <li>second li with ul</li>
+    <li>third li with ul</li>
+  </ul>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+  INDEX
+{% endblock title %}
+
+{% block body %}
+  <a href="{% url 'articles:create' %}">[INSERT INTO]</a>
+  <hr>
+  {% for art in articles %}
+    <div>
+      <h4><a href="{% url 'articles:detail' art.pk %}">{{ art.pk }} {{art.title}}</a></h4>
+      <p>{{ art.content }}</p>
+    </div>
+  {% endfor %}
+{% endblock body %}

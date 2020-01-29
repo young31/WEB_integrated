@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Result</title>
+</head>
+<body>
+  <h1>RESULT</h1>
+
+  <h2>your numbers are {{ nums }}</h2>
+  <h2>this week's numbers are {{ really_real }}</h2>
+  
+  {% if nums == really_real %}
+    <h1>집에가자!!!!</h1>
+  {% else %}
+    <p>일해라 노예야!!!!</p>
+  {% endif %}
+</body>
+</html>

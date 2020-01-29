@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <style>
+    .bg {
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <img id="dino" width="100px" height="100px" src="https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/88/e5/36/88e536d4-8a08-7c3b-ad29-c4e5dabc9f45/AppIcon-1x_U007emarketing-sRGB-85-220-0-6.png/246x0w.jpg" alt="dino" />
+  </div>
+
+  <script>
+    const bg = document.querySelector('.bg')
+    const dino = bg.querySelector('#dino')
+
+    // position을 absulute로 만들 필요가 있다.
+    dino.style.position = 'absolute'
+    dino.addEventListener('mouseover', event => {
+      dino.style.left = window.innerWidth * Math.random(0, 1) + 'px'
+      dino.style.top = window.innerHeight * (1 - Math.random(0, 1)) + 'px'
+      console.log(dino.x, window.innerWidth * Math.random(0, 1))
+    })
+
+
+    let right = 0
+    let up = 0
+    let down = 0
+    let left = 0
+      // 37 <= event.keyCode <= 40
+    document.addEventListener('keydown', () => {
+      if (event.key === 'ArrowUp') {
+        console.log('Up')
+        up += 20
+        dino.style.marginBottom = up + 'px'
+          // dino.style.marginBottom = Number(dino.style.marginBottom.slice(0, -2)) + 20 + 'px'
+      } else if (event.key === 'ArrowDown') {
+        console.log('Down')
+        down += 20
+        dino.style.marginTop = down + 'px'
+          // dino.style.marginTop = Number(dino.style.marginTop.slice(0, -2)) + 20 + 'px'
+
+      } else if (event.key === 'ArrowLeft') {
+        console.log('Left')
+        right += 20
+        dino.style.marginRight = right + 'px'
+          // dino.style.marginRight = Number(dino.style.marginRight.slice(0, -2)) + 20 + 'px'
+      } else if (event.key === 'ArrowRight') {
+        console.log('Right')
+        left += 20
+        dino.style.marginLeft = left + 'px'
+          //dino.style.marginLeft = Number(dino.style.marginLeft.slice(0, -2)) + 20 + 'px'
+      }
+    })
+  </script>
+</body>
+
+</html>

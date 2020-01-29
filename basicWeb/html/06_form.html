@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Form</title>
+</head>
+<body>
+  <!-- ## action: target of form ## -->
+  <form action="#">
+    TEXT: <input type="tex" placeholder="내용입력" name="JSON"><br/>
+    NUM: <input type="number" disabled><br/>
+    PW: <input type="password"><br/>
+    E-mail: <input type="email"><br/>
+    DATE: <input type="date" value="2019-08-01" name="BB"><br/>
+
+    <!-- ## 무엇을 체크하면 value가 뭐가 들어왔는지를 language를 보고 알 수 있음 ## -->
+    <input type="radio" name="language" value="1">HTML <br/> 
+    <input type="radio" name="language" value="2" checked>CSS <br/>
+    <input type="radio" name="language" value="3">JS <br/>
+    <hr/>
+
+    <select name="country" id="">
+      <option value="1">ko</option>
+      <option value="2" selected>jp</option>
+      <option value="3">ch</option>
+    </select><br/>
+
+    <!-- ## 체크박스는 여러개 선택 가능 ## -->
+    <input type="checkbox" name="option" value="1">
+    <input type="checkbox" name="option" value="2"> <br/>
+
+    <input type="color" value="#FF6600"><br/>
+
+    <input type="submit" value="제출하기">
+
+  </form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- vue import -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Todo</title>
+  <style>
+    .todo-list {
+      display: inline-block;
+      width: 33%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app">
+    <h1>Todo App</h1>
+    <!-- category라는 것은 임의 이름// 설정가능(props) -->
+    <todo-list category="취뽀"></todo-list>
+    <todo-list category="SSAFY"></todo-list>
+    <todo-list category="ETC."></todo-list>
+  </div>
+
+  <!-- component -->
+  <script>
+    Vue.component('todo-list', {
+      template: `
+      <div class="todo-list">
+        <h2>{{ category }}</h2>
+        <input type="text" v-model="newTodo">
+        <button v-on:click="addTodo">+</button>
+        <ul>
+          <li v-for="todo in todos" v-bind:key="todo.id">
+            <span>{{ todo.content }}</span>
+            <button v-on:click="removeTodo(todo.id)">x</button>
+          </li>
+        </ul>
+      </div>
+      `,
+      props: {
+        'category': {
+          type: String,
+          required: true,
+        }
+        // 속성값으로 null을 주면 어떤 타입이든 허용
+      },
+      data: function() {
+        return {
+          todos: [],
+          newTodo: '',
+        }
+      },
+      methods: {
+        addTodo: function() {
+          this.todos.push({
+            id: new Date().getTime(),
+            content: this.newTodo
+          })
+          this.newTodo = ''
+        },
+        removeTodo: function(id) {
+          this.todos = this.todos.filter((todo) => (todo.id !== id))
+        }
+      },
+    })
+  </script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      methods: {
+
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template_language</title>
+</head>
+<body>
+  <h1>template language</h1>
+  <hr>
+
+  <h2>1. 반복문</h2>
+  {% for menu in menus %}
+  <p>{{ menu }}</p>
+  {% endfor %}
+
+  {% for menu in menus %}
+  <p>{{ forloop.counter }}. {{ menu }}</p>
+  {% endfor %}
+
+  {% for user in empty_list %}
+  <p>{{ user }}</p>
+  {% empty %}
+  <p>no user yet</p>
+  {% endfor %}
+  <hr>
+  
+  <h2>2. 조건문</h2>
+
+  {% if 'aa' in menus %}
+  <p>aa is healthy food</p>
+  {% endif %}
+
+  {% for menu in menus %}
+    <p>{{ forloop.counter }} 만큼 도는중</p>
+
+    {% if forloop.first %}
+      <p>{{ menu }} is good!</p>
+    {% else %}
+      <p>{{ menu }}</p>
+    {% endif %}
+
+  {% endfor %}
+  <hr>
+
+  <h2>3. length filter</h2>
+
+  {% for message in messages %}
+    {% if message|length > 5 %}
+      <p>{{ message }}, too long</p>
+    {% else %}
+      <p>{{message}}, shorter better</p>
+    {% endif %}
+  {% endfor %}
+  <hr>
+
+  <h2>4. 로렌 입숨</h2>
+  {% lorem %}
+
+  {% lorem 4 w random %}
+
+  {% lorem 1 p random %}
+  <hr>
+
+  <h2>5. 글자 수 제한(truncate) </h2>
+  {% comment %} 단어단위로 제한 {% endcomment %}
+  <p>{{ my_sentence|truncatewords:3 }}</p>
+  {% comment %} 글자단어 제한 {% endcomment %}
+  <p>{{ my_sentence|truncatechars:10 }}</p>
+  <hr>
+
+  <h2>6. 글자 관련 필터</h2>
+  <p>{{ 'abc'|length }}</p>
+  <p>{{ 'ABC'|lower }}</p>
+  <p>{{ my_sentence|title }}</p>
+  <p>{{ 'abcdef'|capfirst }}</p>
+  <p>{{ menus|random }}</p>
+  <hr>
+  
+  <h2>7. 연산</h2>
+  <P>{{ 4|add:6 }}</P>
+  <hr>
+
+  <h2>8. 날자표현</h2>
+  <p>{{ now }}</p>
+  <p>{% now "DATE_TIME_FORMAT" %}</p>
+  <p>{% now "SHORT_DATETIME_FORMAT" %}</p>
+  <p>{% now "SHORT_DATE_FORMAT" %}</p>
+  <p>{% now 'Y년 m월 d일 (D) h:i'  %}</p>
+  <hr>
+
+  {% now "Y" as current_year %}
+  <p>{{ current_year }}</p>
+  <hr>
+  
+  {{ now |date:"DATE_FORMAT" }}
+
+  <h2>9. 기타</h2>
+  <p>{{ "google.com"|urlize }}</p>
+
+</body>
+</html>

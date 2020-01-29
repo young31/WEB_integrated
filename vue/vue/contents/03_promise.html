@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- vue js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- axios import -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Promise</title>
+</head>
+
+<body>
+
+  <script>
+    const API_URL = 'https://dog.ceo/api/breeds/image/random'
+
+    axios.get(API_URL) // promise 객체 반환(resolved <=> rejected)
+      .catch(error => { // promise 객체를 풀어줄 필요가 있음(resolved 이므로 then method)
+        console.error(error)
+      })
+  </script>
+</body>
+
+</html>

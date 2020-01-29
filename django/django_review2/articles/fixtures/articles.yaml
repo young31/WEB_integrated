@@ -1,0 +1,28 @@
+- model: articles.article
+  pk: 1
+  fields:
+    title: first title!
+    content: ''
+    created_at: 2019-10-16 01:22:45.540638+00:00
+    updated_at: 2019-10-16 01:22:45.540638+00:00
+- model: articles.article
+  pk: 2
+  fields:
+    title: 2nd article
+    content: ''
+    created_at: 2019-10-16 01:23:45.526759+00:00
+    updated_at: 2019-10-16 01:23:45.526759+00:00
+- model: articles.article
+  pk: 3
+  fields:
+    title: third
+    content: How R U
+    created_at: 2019-10-16 04:47:34.097284+00:00
+    updated_at: 2019-10-16 04:47:34.097284+00:00
+- model: articles.article
+  pk: 4
+  fields:
+    title: "\uB4DC\uB514\uC5B4"
+    content: "\uD638\uC6B0"
+    created_at: 2019-10-16 07:44:23.183005+00:00
+    updated_at: 2019-10-16 07:44:23.183005+00:00

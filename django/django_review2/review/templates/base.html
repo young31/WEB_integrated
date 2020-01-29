@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head class="container">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% comment %} {% static 'bootstrap/css/bootstrap-reboot.min.css' %}
+  {% static 'bootstrap/css/bootstrap-grid.min.css' %} {% endcomment %}
+
+  {% comment %} bootstrap {% endcomment %}
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-reboot.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  {% comment %} font {% endcomment %}
+  <script src="https://kit.fontawesome.com/aaf8b60220.js" crossorigin="anonymous"></script>
+  {% comment %} axios {% endcomment %}
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  {% comment %} block title {% endcomment %}
+  <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+  <header>
+    <a href={% url 'accounts:signup' %}>signup</a>  <a href="{% url 'accounts:login' %}">login</a>  <a href="{% url 'accounts:logout' %}">logout</a>
+    <form action="{% url 'accounts:delete' %}" method='post'>
+      {% csrf_token %}
+      <button type="submit">탈퇴</button>
+    </form>
+    <form action="{% url 'accounts:update' %}" mehtod='post'>
+      {% csrf_token %}
+      <button type="submit">정보수정</button>
+    </form>
+
+    {% if request.user.is_anonymous %}
+       <h1>Welcome~ You <span display="need login">need login</span></h1>
+    {% else %}
+      <h1>Welcome~ You are:<span display="need login">{{ user.username }}</span></h1>
+    {% endif %}
+    
+    <a href="{% url 'articles:index' %}">[back]</a><br>
+  </header>
+
+  <div>
+    {% block body %}
+    {% endblock body %}
+  </div>
+  
+  {% comment %} <script src="{% static 'bootstrap\js\bootstrap.bundle.js' %}"></script> {% endcomment %}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>
+  </script>
+</body>
+</html>

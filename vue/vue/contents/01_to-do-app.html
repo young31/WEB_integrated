@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- vue import -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>to do app</title>
+  <style>
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1 v-bind:style="{ color: activeColor, fontSize: fontSize+'px' }">To do app</h1>
+    <!-- show mode -->
+    <select v-model="showmode">
+      <option value="all">전체보기</option>
+      <option value="notCompleted">완료 안됨</option>
+      <option value="completed">완료 됨</option>
+    </select>
+    <ul>
+      <li v-for="todo in todobyShowMode" v-bind:class="{ completed: todo.done }" v-bind:key="todo.id">
+        <input type="checkbox" v-model="todo.done"> {{ todo.content }}
+      </li>
+      <!-- <li v-else @click="toggle(todo)">{{ todo.content }} => not yet</li> -->
+    </ul>
+    <input v-model="newtodo" type="text" placeholder="wirte down todos" @keydown.enter="addTodo"> <button @click="addTodo">add</button>
+    <button @click="clear">clear done item</button><br> {{reversedNewtodo}}
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'vue-todos'
+    const todoSTORAGE = {
+      fetch: function() { // 할당느낌
+        return JSON.parse(localStorage.getItem(STORAGE_KEY))
+      },
+      save: function(todos) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos)) // 저장(serializing))
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todos: [],
+        newtodo: '',
+        // css
+        activeColor: 'orange',
+        fontSize: 30,
+        // show
+        showmode: 'all'
+      },
+      methods: {
+        toggle: function(todo) {
+          todo.done = !todo.done
+        },
+        addTodo: function() {
+          if (this.newtodo) {
+            this.todos.push({
+              id: new Date().getTime(),
+              content: this.newtodo,
+              done: false
+            })
+            this.newtodo = ''
+          }
+        },
+        clearDone: function() {
+          let tempTodos = []
+          for (todo of this.todos) {
+            if (!todo.done) {
+              tempTodos.push(todo)
+            }
+          }
+          this.todos = tempTodos
+        },
+        clear: function() {
+          this.todos = this.todos.filter((item) => (!item.done))
+        },
+
+      },
+      computed: {
+        reversedNewtodo: function() {
+          return this.newtodo.split('').reverse().join('')
+        },
+        todobyShowMode: function() { // mode에 따라 todo list 보이게/안보이게
+          if (this.showmode === 'notCompleted') {
+            return this.todos.filter((todo) => (!todo.done))
+          } else if (this.showmode === 'completed') {
+            return this.todos.filter(todo => (todo.done))
+          } else {
+            return this.todos
+          }
+        }
+      },
+      created() {
+        this.todos = todoSTORAGE.fetch()
+      },
+      watch: {
+        todos: {
+          handler: function() {
+            todoSTORAGE.save(this.todos)
+          },
+          deep: true,
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>birthday?</title>
+</head>
+<body>
+  {% now "m" as cur_month %}
+  {% now "d" as cur_day %}
+
+  {% if cur_month == "05" and cur_day == "16" %}
+    <p>yes</p>
+  {% else %}
+    <p>no</p>
+  {% endif %}
+  
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- axios import -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Document</title>
+  <style>
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>댕댕이</h1>
+  <button id="dog">dog</button>
+  <button id="cat">cat</button>
+  <div class="animals"></div>
+
+
+  <script>
+    const dogUrl = 'https://dog.ceo/api/breeds/image/random'
+    const catUrl = 'https://api.thecatapi.com/v1/images/search'
+
+    // 함수에는 담을 수 있음
+
+    // Dog Function
+    const addDogs = function() {
+      // axios를 함수에 이런식으로 끼워 넣어서 클릭하면 발생하게 가능
+      axios.get(dogUrl)
+        .then(function(response) {
+          // 이미지 태그 생성
+          const dogImage = document.createElement('img')
+          dogImage.src = response.data.message
+          dogImage.alt = 'dogs'
+            // 끼워넣기
+          const wall = document.querySelector('div')
+          wall.appendChild(dogImage)
+        })
+    }
+
+    // Cat Function
+    const addCats = function() {
+      axios.get(catUrl)
+        .then(function(reponse) {
+          const catImage = document.createElement('img')
+          console.log(reponse)
+          catImage.src = reponse.data[0].url
+          catImage.alt = 'cat'
+
+          const wall = document.querySelector('div')
+          wall.appendChild(catImage)
+        })
+    }
+
+    // 버튼에 담아서 언제든 실행할 수 있게
+    const dogBtn = document.querySelector('#dog')
+    dogBtn.addEventListener('click', addDogs)
+    const catBtn = document.querySelector('#cat')
+    catBtn.addEventListener('mouseover', addCats)
+  </script>
+</body>
+
+</html>
